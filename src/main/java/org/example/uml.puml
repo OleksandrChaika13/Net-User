@@ -1,0 +1,38 @@
+@startuml
+class org.example.app.client.ClientHandler {
+# void channelRead0(ChannelHandlerContext,String)
+}
+class org.example.app.utils.Constants {
++ {static} int PORT
++ {static} String HOST
++ {static} String SERVER_START_MSG
++ {static} String USER_JOIN_MSG
++ {static} String MSG_RECEIVE_MSG
++ {static} String SERVER_CLOSE_MSG
++ {static} String SERVER_HELLO_MSG
++ {static} String SERVER_HELLO2_MSG
++ {static} String SERVER_MAIN_MSG
+}
+class org.example.app.server.NettyServer {
++ {static} void runServer()
+}
+class org.example.app.server.ServerHandler {
+~ {static} List<Channel> channels
++ void channelActive(ChannelHandlerContext)
++ void channelRead0(ChannelHandlerContext,String)
++ void exceptionCaught(ChannelHandlerContext,Throwable)
+}
+class org.example.app.client.Client {
++ {static} void main(String[])
+}
+class org.example.app.server.Server {
++ {static} void main(String[])
+}
+class org.example.app.client.NettyClient {
++ {static} void runClient()
+}
+
+
+io.netty.channel.SimpleChannelInboundHandler <|-- org.example.app.client.ClientHandler
+io.netty.channel.SimpleChannelInboundHandler <|-- org.example.app.server.ServerHandler
+@enduml
